@@ -19,14 +19,10 @@ template '/etc/opscode/chef-server.rb.d/ldap.rb' do
     base_dn: ldap_search_base,
     bind_dn: ldap_bind_dn,
     bind_password: ldap_bind_password,
-    group_dn: nil,
     host: ldap_host,
     login_attribute: ldap_uid,
     port: ldap_port,
-    ssl_enabled: false,
-    system_adjective: ldap_auth_name,
-    timeout: 60000,
-    tls_enabled: false,
+    system_adjective: ldap_auth_name
   )
   notifies :run, 'bash[reconfigure_chef]', :delayed
 end

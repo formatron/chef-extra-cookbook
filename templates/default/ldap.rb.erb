@@ -1,11 +1,33 @@
-ldap['base_dn']	= <%= @base_dn %>
-ldap['bind_dn']	= <%= @bind_dn %>
-ldap['bind_password'] = <%= @bind_password %>
-ldap['group_dn'] = <%= @group_dn %>
-ldap['host'] = <%= @host %>
-ldap['login_attribute'] = <%= @login_attribute %>
+<% unless @base_dn.nil? %>
+ldap['base_dn']	= '<%= @base_dn %>'
+<% end %>
+<% unless @bind_dn.nil? %>
+ldap['bind_dn']	= '<%= @bind_dn %>'
+<% end %>
+<% unless @bind_password.nil? %>
+ldap['bind_password'] = '<%= @bind_password %>'
+<% end %>
+<% unless @group_dn.nil? %>
+ldap['group_dn'] = '<%= @group_dn %>'
+<% end %>
+<% unless @host.nil? %>
+ldap['host'] = '<%= @host %>'
+<% end %>
+<% unless @login_attribute.nil? %>
+ldap['login_attribute'] = '<%= @login_attribute %>'
+<% end %>
+<% unless @port.nil? %>
 ldap['port'] = <%= @port %>
+<% end %>
+<% unless @ssl_enabled.nil? %>
 ldap['ssl_enabled'] = <%= @ssl_enabled %>
-ldap['system_adjective'] = <%= @system_adjective %>
+<% end %>
+<% unless @system_adjective.nil? %>
+ldap['system_adjective'] = '<%= @system_adjective %>'
+<% end %>
+<% unless @timeout.nil? %>
 ldap['timeout'] = <%= @timeout %>
+<% end %>
+<% unless @tls_enabled.nil? %>
 ldap['tls_enabled']= <%= @tls_enabled %>
+<% end %>
