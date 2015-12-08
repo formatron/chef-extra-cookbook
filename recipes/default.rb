@@ -29,6 +29,7 @@ end
 
 bash 'reconfigure_chef' do
   code <<-EOH.gsub(/^ {4}/, '')
+    set -e
     chef-server-ctl reconfigure
     opscode-manage-ctl reconfigure
   EOH
