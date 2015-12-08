@@ -1,6 +1,7 @@
 configuration = node['formatron_chef_extra']['configuration']
 
 hosted_zone_name = configuration['dsl']['global']['hosted_zone_name']
+
 ldap_config = configuration['config']['ldap']
 ldap_sub_domain = ldap_config['sub_domain']
 ldap_host = "#{ldap_sub_domain}.#{hosted_zone_name}"
@@ -11,6 +12,10 @@ ldap_bind_password = ldap_config['bind_password']
 ldap_uid = ldap_config['uid']
 ldap_auth_name = ldap_config['auth_name']
 ldap_dn_suffix = ldap_config['dn_suffix']
+
+chef_server_config = configuration['config']['chef_server']
+chef_server_username = chef_server_config['username']
+chef_server_password = chef_server_config['password']
 
 node.default['formatron_common']['configuration'] = configuration
 include_recipe 'formatron_common::default'
@@ -33,6 +38,8 @@ bash 'reconfigure_chef' do
     set -e
     chef-server-ctl reconfigure
     opscode-manage-ctl reconfigure
+    echo '#{chef_server_password}
+    #{chef_server_password}' | chef-server-ctl password #{chef_server_username}
   EOH
   action :nothing
 end

@@ -8,6 +8,15 @@
   end
 end
 
+chef_server_version = '12.2.0-1'
+username = 'test'
+first_name = 'test'
+last_name = 'user'
+email = 'test@test.com'
+password = 'password'
+organization_short_name = 'org'
+organization_full_name = 'organization'
+
 node.default['formatron_chef_extra']['configuration'] = {
   'dsl' => {
     'global' => {
@@ -58,18 +67,13 @@ node.default['formatron_chef_extra']['configuration'] = {
       'member_of_attr' => 'memberOf',
       'email_attr' => 'mail',
       'port' => 4000
+    },
+    'chef_server' => {
+      'username' => username,
+      'password' => password
     }
   }
 }
-
-chef_server_version = '12.2.0-1'
-username = 'test'
-first_name = 'test'
-last_name = 'user'
-email = 'test@test.com'
-password = 'password'
-organization_short_name = 'org'
-organization_full_name = 'organization'
 
 bash 'install_chef' do
   code <<-EOH.gsub(/^ {4}/, '')
