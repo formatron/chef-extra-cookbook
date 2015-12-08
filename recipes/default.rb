@@ -10,14 +10,15 @@ ldap_bind_dn = ldap_config['bind_dn']
 ldap_bind_password = ldap_config['bind_password']
 ldap_uid = ldap_config['uid']
 ldap_auth_name = ldap_config['auth_name']
+ldap_dn_suffix = ldap_config['dn_suffix']
 
 node.default['formatron_common']['configuration'] = configuration
 include_recipe 'formatron_common::default'
 
 template '/etc/opscode/chef-server.rb.d/ldap.rb' do
   variables(
-    base_dn: ldap_search_base,
-    bind_dn: ldap_bind_dn,
+    base_dn: "#{ldap_search_base},#{ldap_dn_suffix}",
+    bind_dn: "#{ldap_bind_dn},#{ldap_dn_suffix}",
     bind_password: ldap_bind_password,
     host: ldap_host,
     login_attribute: ldap_uid,
