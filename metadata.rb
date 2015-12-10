@@ -1,5 +1,5 @@
 name 'formatron_chef_extra'
-version '0.1.0'
+version '0.1.1'
 description 'Formatron Chef extra cookbook'
 source_url 'https://github.com/formatron/chef-extra-cookbook'
 issues_url 'https://github.com/formatron/chef-extra-cookbook/issues'

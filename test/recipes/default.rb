@@ -47,17 +47,10 @@ node.default['formatron_chef_extra']['configuration'] = {
           'gem' => 'sensu-plugins-cpu-checks',
           'version' => '0.0.4'
         }
-      },
-      'rabbitmq' => {
-        'vhost' => '/sensu',
-        'user' => 'sensu',
-        'password' => 'password'
       }
     },
     'ldap' => {
       'sub_domain' => 'ldap',
-      'bind_dn' => 'cn=root',
-      'bind_password' => 'password',
       'auth_name' => 'Crowd login',
       'uid' => 'uid',
       'search_base' => 'ou=myunit',
@@ -68,9 +61,22 @@ node.default['formatron_chef_extra']['configuration'] = {
       'email_attr' => 'mail',
       'port' => 4000
     },
-    'chef_server' => {
-      'username' => username,
-      'password' => password
+    'secrets' => {
+      'chef_server' => {
+        'username' => username,
+        'password' => password
+      },
+      'sensu' => {
+        'rabbitmq' => {
+          'vhost' => '/sensu',
+          'user' => 'sensu',
+          'password' => 'password'
+        }
+      },
+      'ldap' => {
+        'bind_dn' => 'cn=root',
+        'bind_password' => 'password'
+      }
     }
   }
 }
